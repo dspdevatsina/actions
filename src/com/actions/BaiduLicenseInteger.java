@@ -8,12 +8,16 @@ import java.io.*;
 
 
 public class BaiduLicenseInteger {
+	public static final String BDLicenseDest="F:\\workspace\\testfiles_result.txt";
+	public static final String BDLicensesourpath = "H:\\bdprofile";
+	public static final String globalcomppath = "H:\\comp.txt";
+	public static final String globalsourcepath = "H:\\source.txt";
+	public static final String globalresultpath = "H:\\result.txt";
+
 	public static void main(String[] args)
 	{
-		compfiles();//SN¶Ô±Èº¯Êı£¬ĞèÒªĞŞ¸ÄcompfilesÏÂµÄ¼¸¸öÎÄ¼şÂ·¾¶,´ÓCOMPÎÄ¼şÖĞ£¬»ñÈ¡SourceÎÄ¼şÖĞµÄÍêÕûSN×Ö·û´®£¬²¢Ğ´Èëresult¡£
-		//getFileList(String path , int deepth);//ºÏ²¢°Ù¶ÈLicense£¬ĞèÒªĞŞ¸Äº¯Êıµ÷ÓÃ²ÎÊı£¬¸ø³öpath¼´¿É£¬Ö»»áµ÷ÓÃÒ»¼¶×ÓÄ¿Â¼ÏÂµÄÎÄ¼ş¡£
-		//String path = "H:\\bdprofile";
-		//getFileList( path , 0);//»ñÈ¡¸ùÄ¿Â¼ÎÄ¼şÁĞ±í
+		//compfiles();//SNå¯¹æ¯”å‡½æ•°ï¼Œéœ€è¦ä¿®æ”¹compfilesä¸‹çš„å‡ ä¸ªæ–‡ä»¶è·¯å¾„,ä»COMPæ–‡ä»¶ä¸­ï¼Œè·å–Sourceæ–‡ä»¶ä¸­çš„å®Œæ•´SNå­—ç¬¦ä¸²ï¼Œå¹¶å†™å…¥resultã€‚
+		getFileList( BDLicensesourpath , 0);//åˆå¹¶ç™¾åº¦Licenseï¼Œéœ€è¦ä¿®æ”¹å‡½æ•°è°ƒç”¨å‚æ•°ï¼Œç»™å‡ºpathå³å¯ï¼Œåªä¼šè°ƒç”¨ä¸€çº§å­ç›®å½•ä¸‹çš„æ–‡ä»¶ã€‚
 	}
 	
 	public static void writeResult1(String str , String destpath,String filename,boolean writetype) 
@@ -50,9 +54,9 @@ public class BaiduLicenseInteger {
 	
 	public static void compfiles()
 	{
-		String comppath = "H:\\comp.txt";
-		String sourcepath = "H:\\source.txt";
-		String resultpath = "H:\\result.txt";
+		String comppath = globalcomppath;
+		String sourcepath = globalsourcepath;
+		String resultpath = globalresultpath;
 		String compstr = "";
 		String sourstr = "";
 		String resultstr = "";
@@ -98,10 +102,16 @@ public class BaiduLicenseInteger {
 	public static void writeResult(String path,String filename,boolean writetype) 
 	{
 		String str = "";
-		String destpath = "F:\\workspace\\testfiles_result.txt";
+		String destpath = BDLicenseDest;
 		str += readbdfile(path,filename);
 		try {
+			
 		BufferedWriter wr = new BufferedWriter(new FileWriter(destpath,writetype));
+		if(writetype == false)
+		{
+			wr.write("deviceid");
+			wr.newLine();
+		}
 		wr.write(str);
 		wr.newLine();
 		wr.flush();
@@ -140,6 +150,8 @@ public class BaiduLicenseInteger {
 			if(isnewfiletowrite==false)
 				isnewfiletowrite = true;
 		}
+		System.out.println("Total Licenst is "+ array.length);
+		System.out.println("file address = "+ BDLicenseDest);
 		return 0;
 	}
 	//sort if for sort an array that includes 2 functions:
