@@ -37,7 +37,7 @@ public class WechatSN {
 	public static final String sourfile = "20180517-lost27000-zb-3503_3020040002150451_3020040002200600_50150pcs.txt";
 	public static final String despfile = "result.txt";
 	public static final boolean isprintrepeating = true;     //switch   
-	public static final boolean isprintlost      = true;    //switch //still has bug
+	public static final boolean isprintlost      = true;    //switch 
 	public static final boolean isgenqrcode      = false;    //generate the QR-code picture or not
 	public static void main(String[] args)
 		{
